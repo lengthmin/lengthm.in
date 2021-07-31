@@ -1,4 +1,4 @@
-import keysSh from './resources/keys.sh';
+import keysSh from 'resources/keys.sh';
 import indexHtml from 'resources/index';
 
 const GITHUB = 'https://github.com/lengthmin';

@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { join } = require('path');
 var argv = require('minimist')(process.argv.slice(2));
 console.log(argv);
 
@@ -10,14 +11,14 @@ async function base64_encode(file) {
 let myPlugin = {
   name: 'res-plugin',
   setup(build) {
-    build.onResolve({ filter: /^resources\/.*$/ }, args => {
+    build.onResolve({ filter: /^resources\/.*$/ }, (args) => {
       return {
         path: args.path,
         namespace: 'res-ns',
       };
     });
 
-    build.onLoad({ filter: /.*/, namespace: 'res-ns' }, async args => {
+    build.onLoad({ filter: /.*/, namespace: 'res-ns' }, async (args) => {
       switch (args.path) {
         case 'resources/index':
           let text = await fs.promises.readFile(
@@ -31,7 +32,11 @@ let myPlugin = {
             loader: 'text',
           };
         default:
-          break;
+          let data = await fs.promises.readFile(join('src', args.path), 'utf8');
+          return {
+            contents: data,
+            loader: 'text',
+          };
       }
     });
   },
@@ -50,9 +55,9 @@ require('esbuild')
     plugins: [myPlugin],
     minify: true,
     color: true,
-    watch: argv["watch"],
+    watch: argv['watch'],
   })
-  .then(result => {
+  .then((result) => {
     console.log(result);
   })
   .catch((e) => {
