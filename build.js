@@ -12,14 +12,14 @@ const resourcesRegex = /^resources\/(.*)$/;
 let myPlugin = {
   name: 'res-plugin',
   setup(build) {
-    build.onResolve({ filter: resourcesRegex }, args => {
+    build.onResolve({ filter: resourcesRegex }, (args) => {
       return {
         path: args.path,
         namespace: 'res-ns',
       };
     });
 
-    build.onLoad({ filter: /.*/, namespace: 'res-ns' }, async args => {
+    build.onLoad({ filter: /.*/, namespace: 'res-ns' }, async (args) => {
       const match = resourcesRegex.exec(args.path);
       const resName = match[1];
       const resDir = 'src/resources';
@@ -53,11 +53,14 @@ require('esbuild')
     plugins: [myPlugin],
     minify: true,
     color: true,
+    define: {
+      GITHUB: JSON.stringify('https://github.com/lengthmin'),
+    },
     watch: argv['watch'],
   })
-  .then(result => {
+  .then((result) => {
     console.log(result);
   })
-  .catch(e => {
+  .catch((e) => {
     throw e;
   });

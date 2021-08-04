@@ -1,7 +1,3 @@
-/**
- * gatherResponse awaits and returns a response body as a string.
- * Use await gatherResponse(..) in an async function to get the response body
- */
 export async function gatherResponse(response: Response) {
   const { headers } = response;
   const contentType = headers.get('content-type') || '';

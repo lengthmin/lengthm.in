@@ -13,6 +13,10 @@ TODO:
 
 ## usage
 
+### keys
+
+<https://lengthm.in/keys>
+
 ### set authorized_keys
 
 ```shell
@@ -38,5 +42,5 @@ export CF_ACCOUNT_ID=xxxxxx
 publish:
 
 ```shell
-yarn pub
+yarn publish
 ```
