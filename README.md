@@ -42,5 +42,5 @@ export CF_ACCOUNT_ID=xxxxxx
 publish:
 
 ```shell
-yarn publish
+yarn run publish
 ```

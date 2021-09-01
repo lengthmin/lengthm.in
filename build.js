@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const fs = require('fs');
 const { join } = require('path');
 var argv = require('minimist')(process.argv.slice(2));
@@ -55,6 +57,7 @@ require('esbuild')
     color: true,
     define: {
       GITHUB: JSON.stringify('https://github.com/lengthmin'),
+      WECHAT_TOKEN: JSON.stringify(process.env.WECHAT_TOKEN ?? ''),
     },
     watch: argv['watch'],
   })

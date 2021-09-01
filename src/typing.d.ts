@@ -4,3 +4,4 @@ declare module 'resources/*' {
 }
 
 declare const GITHUB: string;
+declare const WECHAT_TOKEN: string;

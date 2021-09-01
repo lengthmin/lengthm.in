@@ -14,3 +14,5 @@ index.js
 !src
 
 .env
+
+yarn-error.log
