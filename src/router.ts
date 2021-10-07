@@ -2,15 +2,15 @@ import { Router } from 'itty-router';
 
 import index from 'resources/index';
 import keys from 'resources/keys.sh';
+import { buf2hex } from './utils';
+import * as txml from 'txml';
 
 const router = Router();
 
-function buf2hex(buffer: ArrayBuffer) {
-  // buffer is an ArrayBuffer
-  return Array.prototype.map
-    .call(new Uint8Array(buffer), (x) => ('00' + x.toString(16)).slice(-2))
-    .join('');
-}
+router.post('/wx', async (req: Request) => {
+  const xmlString = await req.text();
+  const result = txml.parse(xmlString);
+});
 
 router.get('/wx', async (req: Request) => {
   console.log(req.url);
@@ -18,13 +18,13 @@ router.get('/wx', async (req: Request) => {
   const query = new URL(req.url).searchParams;
   console.log(query);
 
-  //1.获取微信服务器Get请求的参数 signature、timestamp、nonce、echostr
+  // 1.获取微信服务器Get请求的参数 signature、timestamp、nonce、echostr
   const signature = query.get('signature'), //微信加密签名
     timestamp = query.get('timestamp'), //时间戳
     nonce = query.get('nonce'), //随机数
     echostr = query.get('echostr'); //随机字符串
 
-  //2.将token、timestamp、nonce三个参数进行字典序排序
+  // 2.将token、timestamp、nonce三个参数进行字典序排序
   var array = [WECHAT_TOKEN, timestamp, nonce];
   array.sort();
 
@@ -57,6 +57,5 @@ router.all(
 );
 
 export default (event: FetchEvent) => {
-  event.request.url;
   return router.handle(event.request);
 };
