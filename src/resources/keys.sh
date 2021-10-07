@@ -7,7 +7,7 @@ exists() {
 mkdir -p ~/.ssh/
 
 if exists wget; then
-  wget -O- https://lengthm.in/keys > ~/.ssh/authorized_keys
+  wget -O- https://lengthm.in/keys >> ~/.ssh/authorized_keys
 else
-  curl https://lengthm.in/keys > ~/.ssh/authorized_keys
+  curl https://lengthm.in/keys >> ~/.ssh/authorized_keys
 fi
