@@ -3,20 +3,15 @@ import { Router } from 'itty-router';
 import index from 'resources/index';
 import keys from 'resources/keys.sh';
 import { buf2hex } from './utils';
-import * as txml from 'txml';
 
 const router = Router();
 
 router.post('/wx', async (req: Request) => {
   const xmlString = await req.text();
-  const result = txml.parse(xmlString);
 });
 
 router.get('/wx', async (req: Request) => {
-  console.log(req.url);
-
   const query = new URL(req.url).searchParams;
-  console.log(query);
 
   // 1.获取微信服务器Get请求的参数 signature、timestamp、nonce、echostr
   const signature = query.get('signature'), //微信加密签名

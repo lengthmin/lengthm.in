@@ -28,7 +28,6 @@
   "dependencies": {
     "dotenv": "^10.0.0",
     "itty-router": "^2.3.10",
-    "txml": "^5.0.1",
     "xml2js": "^0.4.23"
   }
 }
