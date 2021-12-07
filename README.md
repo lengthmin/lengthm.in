@@ -1,11 +1,11 @@
-# lengthm.in
+# personal
 
 Powered by Cloudflare Workers :)
 
 here's what it does:
 
-1. if you visit <https://lengthm.in/>, then you will be redirected to my Github.
-2. I can quickly add my ssh pub keys to the server I want to login by using `curl lengthm.in/keys.sh | sh`.
+1. if you visit <https://cat.ms/>, then you will be redirected to my Github.
+2. I can quickly add my ssh pub keys to the server I want to login by using `curl cat.ms/keys.sh | sh`.
 
 TODO:
 
@@ -15,12 +15,12 @@ TODO:
 
 ### keys
 
-<https://lengthm.in/keys>
+<https://cat.ms/keys>
 
 ### set authorized_keys
 
 ```shell
-curl lengthm.in/keys.sh | sh
+curl cat.ms/keys.sh | sh
 ```
 
 ## dev
