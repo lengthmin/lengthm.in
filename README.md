@@ -33,14 +33,9 @@ yarn dev
 
 ### publish
 
-set `CF_ACCOUNT_ID`(actually, my .zshrc will do this automatically by running `source .env`):
-
-```dotenv
-export CF_ACCOUNT_ID=xxxxxx
-```
-
 publish:
 
 ```shell
+yarn wrangler login
 yarn run publish
 ```
