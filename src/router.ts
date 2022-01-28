@@ -38,6 +38,7 @@ router.get('/wx', async (req: Request) => {
     return new Response('mismatch');
   }
 });
+router.get('/busuanzi');
 router.get('/keys', async () => await fetch(`${GITHUB}.keys`));
 router.get('/keys.sh', () => new Response(keys));
 router.get('/gpg', async () => await fetch(`${GITHUB}.gpg`));

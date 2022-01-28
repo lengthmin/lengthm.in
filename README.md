@@ -23,6 +23,10 @@ TODO:
 curl cat.ms/keys.sh | sh
 ```
 
+### page views
+
+<https://github.com/willin/cloudflare-pageviews-worker>
+
 ## dev
 
 ```shell
