@@ -56,7 +56,7 @@ require('esbuild')
     minify: true,
     color: true,
     define: {
-      GITHUB: JSON.stringify('https://github.com/lengthmin'),
+      GITHUB: JSON.stringify('https://github.com/bytemain'),
       WECHAT_TOKEN: JSON.stringify(process.env.WECHAT_TOKEN ?? ''),
     },
     watch: argv['watch'],
