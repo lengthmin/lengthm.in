@@ -11,3 +11,6 @@ if exists wget; then
 else
   curl https://cat.ms/keys >> ~/.ssh/authorized_keys
 fi
+
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
