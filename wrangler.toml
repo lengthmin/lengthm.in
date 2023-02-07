@@ -1,6 +1,3 @@
 name = "me"
 type = "javascript"
 workers_dev = true
-zone_id = ""
-account_id = ""
-route = "cat.ms/*"

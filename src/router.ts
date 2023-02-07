@@ -39,7 +39,10 @@ router.get('/wx', async (req: Request) => {
   }
 });
 router.get('/keys', async () => await fetch(`${GITHUB}.keys`));
-router.get('/keys.sh', () => new Response(keys));
+router.get('/keys.sh', () => {
+  const data = keys.replace(/{{HOST}}/g, HOST);
+  return new Response(data);
+});
 router.get('/gpg', async () => await fetch(`${GITHUB}.gpg`));
 router.all(
   '*',
