@@ -4,8 +4,8 @@ Powered by Cloudflare Workers :)
 
 here's what it does:
 
-1. if you visit <https://cat.ms/>, then you will be redirected to my Github.
-2. I can quickly add my ssh pub keys to the server I want to login by using `curl cat.ms/keys.sh | sh`.
+1. if you visit <https://{HOST}/>, then you will be redirected to my Github.
+2. I can quickly add my ssh pub keys to the server I want to login by using `curl {HOST}/keys.sh | sh`.
 
 TODO:
 
@@ -15,12 +15,12 @@ TODO:
 
 ### keys
 
-<https://cat.ms/keys>
+<https://{HOST}/keys>
 
 ### set authorized_keys
 
 ```shell
-curl cat.ms/keys.sh | sh
+curl {HOST}/keys.sh | sh
 ```
 
 ## dev
