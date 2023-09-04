@@ -1,4 +1,4 @@
-import { Router, IRequest } from 'itty-router';
+import { Router, IRequest, json } from 'itty-router';
 
 import index from 'resources/index';
 import keys from 'resources/keys.sh';
@@ -46,6 +46,62 @@ router.get('/keys.sh', (_r, env) => {
   return new Response(data);
 });
 router.get('/gpg', async (_r, env) => await fetch(`${env.GITHUB}.gpg`));
+
+router.get('/r2/*', async (request, env, context) => {
+  try {
+    const url = new URL(request.url);
+
+    // Construct the cache key from the cache URL
+    const cacheKey = new Request(url.toString(), request);
+    const cache = caches.default;
+
+    // Check whether the value is already available in the cache
+    // if not, you will need to fetch it from R2, and store it in the cache
+    // for future access
+    let response = await cache.match(cacheKey);
+
+    if (response) {
+      console.log(`Cache hit for: ${request.url}.`);
+      return response;
+    }
+
+    console.log(
+      `Response for request url: ${request.url} not present in cache. Fetching and caching request.`,
+    );
+
+    // If not in cache, get it from R2
+    const objectKey = url.pathname.slice('/r2/'.length);
+    const object = await env.MY_BUCKET.get(objectKey);
+    if (object === null) {
+      return new Response('Object Not Found', { status: 404 });
+    }
+
+    // Set the appropriate object headers
+    const headers = new Headers();
+    object.writeHttpMetadata(headers);
+    headers.set('etag', object.httpEtag);
+
+    // Cache API respects Cache-Control headers. Setting s-max-age to 10
+    // will limit the response to be in cache for 10 seconds max
+    // Any changes made to the response here will be reflected in the cached value
+    headers.append('Cache-Control', 's-maxage=30');
+
+    response = new Response(object.body, {
+      headers,
+    });
+
+    // Store the fetched response as cacheKey
+    // Use waitUntil so you can return the response without blocking on
+    // writing to cache
+    context.waitUntil(cache.put(cacheKey, response.clone()));
+
+    return response;
+  } catch (e) {
+    return new Response('Error thrown ' + (e as Error).message);
+  }
+});
+
+// in the end
 router.all(
   '*',
   () =>

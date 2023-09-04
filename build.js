@@ -47,23 +47,33 @@ let myPlugin = {
   },
 };
 
-require('esbuild')
-  .build({
+const esbuild = require('esbuild');
+
+const watchMode = argv['watch'];
+
+esbuild
+  .context({
     entryPoints: ['./src'],
     bundle: true,
     outfile: './index.js',
     plugins: [myPlugin],
-    minify: true,
+    platform: 'browser',
+    target: 'es2020',
+    format: 'esm',
+    treeShaking: true,
     color: true,
     define: {
       GITHUB: JSON.stringify('https://github.com/bytemain'),
       WECHAT_TOKEN: JSON.stringify(process.env.WECHAT_TOKEN ?? ''),
     },
-    watch: argv['watch'],
   })
-  .then((result) => {
-    console.log(result);
-  })
-  .catch((e) => {
-    throw e;
+  .then((ctx) => {
+    if (watchMode) {
+      ctx.watch();
+    } else {
+      ctx.rebuild().then((v) => {
+        console.log(`build ~ result`, v);
+        ctx.dispose();
+      });
+    }
   });

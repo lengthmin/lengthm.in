@@ -7,13 +7,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write '**/*.{js,css,json,md}'",
-    "build": "yarn gen-toml && node build.js",
-    "dev": "run-p dev:build dev:worker",
-    "dev:build": "yarn build --watch",
-    "dev:worker": "wrangler dev",
-    "publish": "yarn build && wrangler publish",
-    "gen-toml": "cfworker-builder gen-toml",
-    "preview": "wrangler preview --remote"
+    "build": "node build.js",
+    "dev": "run-p watch preview",
+    "watch": "yarn build --watch",
+    "preview": "yarn gen-toml && wrangler dev",
+    "publish": "yarn build && yarn gen-toml && wrangler publish",
+    "gen-toml": "cfworker-builder gen-toml"
   },
   "author": "Artin <lengthmin@gmail.com>",
   "license": "MIT",
@@ -21,7 +20,7 @@
     "@cloudflare/workers-types": "^4.20230821.0",
     "@types/node": "^16.7.10",
     "@types/xml2js": "^0.4.9",
-    "esbuild": "^0.12.17",
+    "esbuild": "^0.19.2",
     "minimist": "^1.2.6",
     "npm-run-all": "^4.1.5",
     "typescript": "^4.3.5",
