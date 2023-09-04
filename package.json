@@ -1,6 +1,6 @@
 {
-  "private": true,
   "name": "personal",
+  "private": true,
   "version": "1.0.0",
   "description": "A shortcut to me.",
   "main": "index.js",
@@ -11,7 +11,7 @@
     "dev": "run-p watch preview",
     "watch": "yarn build --watch",
     "preview": "yarn gen-toml && wrangler dev",
-    "publish": "yarn build && yarn gen-toml && wrangler publish",
+    "publish": "yarn build && yarn gen-toml && wrangler deploy",
     "gen-toml": "cfworker-builder gen-toml"
   },
   "author": "Artin <lengthmin@gmail.com>",
