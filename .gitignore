@@ -16,3 +16,5 @@ index.js
 .env
 
 yarn-error.log
+
+wrangler.toml

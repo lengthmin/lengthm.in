@@ -11,7 +11,8 @@
     "dev": "run-p dev:build dev:worker",
     "dev:build": "yarn build --watch",
     "dev:worker": "wrangler dev",
-    "publish": "yarn build && wrangler publish"
+    "publish": "yarn build && wrangler publish",
+    "gen-toml": "cfworker-builder gen-toml"
   },
   "author": "Artin <lengthmin@gmail.com>",
   "license": "MIT",
@@ -26,7 +27,8 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "dotenv": "^10.0.0",
+    "@opensumi/cfworker-builder": "^1.0.1",
+    "dotenv": "^16.3.1",
     "itty-router": "^2.3.10",
     "xml2js": "^0.4.23"
   }
