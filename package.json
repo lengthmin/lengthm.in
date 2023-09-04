@@ -12,7 +12,8 @@
     "dev:build": "yarn build --watch",
     "dev:worker": "wrangler dev",
     "publish": "yarn build && wrangler publish",
-    "gen-toml": "cfworker-builder gen-toml"
+    "gen-toml": "cfworker-builder gen-toml",
+    "preview": "wrangler preview --remote"
   },
   "author": "Artin <lengthmin@gmail.com>",
   "license": "MIT",
@@ -29,7 +30,7 @@
   "dependencies": {
     "@opensumi/cfworker-builder": "^1.0.1",
     "dotenv": "^16.3.1",
-    "itty-router": "^2.3.10",
+    "itty-router": "^4.0.22",
     "xml2js": "^0.4.23"
   }
 }

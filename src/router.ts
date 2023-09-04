@@ -1,16 +1,18 @@
-import { Router } from 'itty-router';
+import { Router, IRequest } from 'itty-router';
 
 import index from 'resources/index';
 import keys from 'resources/keys.sh';
 import { buf2hex } from './utils';
 
-const router = Router();
+type CF = [env: IRuntimeEnv, context: ExecutionContext];
 
-router.post('/wx', async (req: Request) => {
+const router = Router<IRequest, CF>();
+
+router.post('/wx', async (req: Request, environment, context) => {
   const xmlString = await req.text();
 });
 
-router.get('/wx', async (req: Request) => {
+router.get('/wx', async (req: Request, env, ctx) => {
   const query = new URL(req.url).searchParams;
 
   // 1.获取微信服务器Get请求的参数 signature、timestamp、nonce、echostr
@@ -20,7 +22,7 @@ router.get('/wx', async (req: Request) => {
     echostr = query.get('echostr'); //随机字符串
 
   // 2.将token、timestamp、nonce三个参数进行字典序排序
-  var array = [WECHAT_TOKEN, timestamp, nonce];
+  var array = [env.WECHAT_TOKEN, timestamp, nonce];
   array.sort();
 
   const myText = new TextEncoder().encode(array.join(''));
@@ -38,12 +40,12 @@ router.get('/wx', async (req: Request) => {
     return new Response('mismatch');
   }
 });
-router.get('/keys', async () => await fetch(`${GITHUB}.keys`));
-router.get('/keys.sh', () => {
-  const data = keys.replace(/{{HOST}}/g, HOST);
+router.get('/keys', async (_r, env) => await fetch(`${env.GITHUB}.keys`));
+router.get('/keys.sh', (_r, env) => {
+  const data = keys.replace(/{{HOST}}/g, env.HOST);
   return new Response(data);
 });
-router.get('/gpg', async () => await fetch(`${GITHUB}.gpg`));
+router.get('/gpg', async (_r, env) => await fetch(`${env.GITHUB}.gpg`));
 router.all(
   '*',
   () =>
@@ -54,6 +56,4 @@ router.all(
     }),
 );
 
-export default (event: FetchEvent) => {
-  return router.handle(event.request);
-};
+export default router;

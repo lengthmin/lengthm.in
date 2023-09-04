@@ -3,6 +3,8 @@ declare module 'resources/*' {
   export default data;
 }
 
-declare const GITHUB: string;
-declare const WECHAT_TOKEN: string;
-declare const HOST: string;
+declare interface IRuntimeEnv {
+  GITHUB: string;
+  WECHAT_TOKEN: string;
+  HOST: string;
+}
