@@ -1,4 +1,4 @@
-import { Router, IRequest, json } from 'itty-router';
+import { Router, IRequest } from 'itty-router';
 
 import index from 'resources/index';
 import keys from 'resources/keys.sh';

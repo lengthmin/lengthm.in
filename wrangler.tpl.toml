@@ -10,3 +10,6 @@ main = "index.js"
 binding = 'MY_BUCKET'
 bucket_name = '{{CLOUDFLARE_BUCKET_NAME}}'
 preview_bucket_name = '{{CLOUDFLARE_PREVIEW_BUCKET_NAME}}'
+
+[vars]
+GITHUB = "https://github.com/bytemain"

@@ -62,10 +62,6 @@ esbuild
     format: 'esm',
     treeShaking: true,
     color: true,
-    define: {
-      GITHUB: JSON.stringify('https://github.com/bytemain'),
-      WECHAT_TOKEN: JSON.stringify(process.env.WECHAT_TOKEN ?? ''),
-    },
   })
   .then((ctx) => {
     if (watchMode) {
