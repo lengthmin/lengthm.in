@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write '**/*.{js,css,json,md}'",
-    "build": "node build.js",
+    "build": "node build.mjs",
     "dev": "run-p watch preview",
     "watch": "yarn build --watch",
     "preview": "yarn gen-toml && wrangler dev",
