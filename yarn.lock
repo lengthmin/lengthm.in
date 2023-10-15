@@ -277,6 +277,137 @@
   resolved "https://registry.yarnpkg.com/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.4.15.tgz#d7c6e6755c78567a951e04ab52ef0fd26de59f32"
   integrity sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==
 
+"@jswork/bark-jssdk@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@jswork/bark-jssdk/-/bark-jssdk-1.0.5.tgz#f958c15ca9717087ed2c4e93b4d3143cd6e19e46"
+  integrity sha512-vuoUN/S2B9tQymzGW3UcTRX+F8eFzA1Kvon6xyx0RXx5eP3DVbKyJgNlK9k7Y3nILPRvOZlbmGGDfVNn9tq2+A==
+  dependencies:
+    "@jswork/node-http-schema" "^1.0.4"
+
+"@jswork/enhanced-fetch@^1.0.25":
+  version "1.0.25"
+  resolved "https://registry.yarnpkg.com/@jswork/enhanced-fetch/-/enhanced-fetch-1.0.25.tgz#02a8eab3f85cdcbf01ca23fa4041fa5bdb0ba896"
+  integrity sha512-p2Zt2ErAW8NJ2Ko80zc5KJsRApO1Te+LdVrBzt84qTT2LQzggXXXU0+7NVTTbv7CB7vILq9Mt/aj/FziQb7l+A==
+  dependencies:
+    "@jswork/fetch" "^1.0.13"
+    "@jswork/next-apply-fetch-middleware" "^1.0.10"
+
+"@jswork/fetch@^1.0.13":
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/@jswork/fetch/-/fetch-1.0.13.tgz#f74c12034b9bcc3203c5cfbefd9eab792fe12cfe"
+  integrity sha512-YMegvLYiRgMq5B+px6VMcPmwowDPwLxoY5kuBSHsoiwN96NS0mGJhb3iLAVKZXu4BUxHBKQ5fCFpuxujmWGLIQ==
+
+"@jswork/http-data-parser@^1.0.10":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@jswork/http-data-parser/-/http-data-parser-1.0.10.tgz#f0ebcb00f16452f56e73d5cb7f341615cbc9f262"
+  integrity sha512-HJMXt+zTNfhgBQAzTGiwI/1usVrowWUF7y+JJUMfYEVYhlwB9xtV8oibZl7aONIUupq1LYsNoBi9GOb7zZ2qOQ==
+
+"@jswork/http-rest-config@^2.0.10":
+  version "2.0.18"
+  resolved "https://registry.yarnpkg.com/@jswork/http-rest-config/-/http-rest-config-2.0.18.tgz#e2b9d77e800e5449ab81637cb7b48b7af384081e"
+  integrity sha512-YXdIFUFPJgkO6IcmYTwIdNH4HB7PjjJQmN3FsECRpUY9+04ClVL1MO2/tCrH6VDF8pIkYbeooO5nQaCY747FXA==
+  dependencies:
+    "@jswork/http-data-parser" "^1.0.10"
+    "@jswork/next-difference" "^1.0.2"
+    "@jswork/next-tmpl" "^1.0.7"
+
+"@jswork/next-abstract-request@^1.0.52":
+  version "1.0.52"
+  resolved "https://registry.yarnpkg.com/@jswork/next-abstract-request/-/next-abstract-request-1.0.52.tgz#b1a529a1b31919ff1ae886c2ade002f16cc1f9a4"
+  integrity sha512-MzwssjerQIirgcGdzfIgKJ31bv0Dq6lQeNUFMAulKa94O0cAtNz//f1pDNslMCwxxrwQYkuBq3bLs8Moj2zDDw==
+  dependencies:
+    "@jswork/next-content-type" "^1.0.11"
+    "@jswork/next-data-transform" "^1.0.21"
+    "@jswork/next-interceptor" "^1.1.2"
+    "@jswork/next-parse-request-args" "^1.0.9"
+    "@jswork/next-stub-singleton" "^1.0.7"
+
+"@jswork/next-apply-fetch-middleware@^1.0.10":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@jswork/next-apply-fetch-middleware/-/next-apply-fetch-middleware-1.0.10.tgz#846e77f941458b59a9e3f069a0f22a19ac050ced"
+  integrity sha512-LNz049MqeJxHxtNPDZKZDJRYqxJmTNdPCS0Y6Skx+62T3XqZ1qECcVPaHdKMCE/GM75ZhoeIAmeXOwLgIqC0Pw==
+  dependencies:
+    "@jswork/next-compose" "^1.1.3"
+
+"@jswork/next-compose@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@jswork/next-compose/-/next-compose-1.1.3.tgz#c6d4d754e7746e1545af41b2af75c0b3146d4503"
+  integrity sha512-JHaRKKVKrbAvMTuPmuxeu8mzB+GEneNIDvijBmsd4h4VeHFy6NQlSZnE0y+Ba7Dutc5MatV0IlmWUwF1UmmYmg==
+
+"@jswork/next-content-type@^1.0.11":
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@jswork/next-content-type/-/next-content-type-1.0.11.tgz#bb73745d74eb49f06fe2d8aa88a6fb90cf8d7753"
+  integrity sha512-OTnPrHiDOKsPH1vgZcoGucAG0+4YwlxSmEidL75dMZVtVchE6dWKxplxtgYohYnTd9x4+rznMhVaxD8bB9dQOQ==
+
+"@jswork/next-data-transform@^1.0.21":
+  version "1.0.21"
+  resolved "https://registry.yarnpkg.com/@jswork/next-data-transform/-/next-data-transform-1.0.21.tgz#e1a9210fbfb82b6f16bba919f82bff728c2785ac"
+  integrity sha512-aYFBNHt8hOOOoYEhzwEbFFQ5RC4S3Prw7pJuANZYlcF8L0IH+VGexJdO1qMF9MWoZ8UN8WpRlvEMjVV/7nHgBw==
+  dependencies:
+    "@jswork/next-param" "^1.0.12"
+
+"@jswork/next-difference@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@jswork/next-difference/-/next-difference-1.0.2.tgz#aea2063a35ea22a988e3d2554598685131fa1034"
+  integrity sha512-XtpsVnQXLBdSPCMA10FOap9zEdFNT7Fa0k/d+5l+EOdgSu6LPJSJ/h2X6H+KzNQHBMaMDet5N5QeEA7jzUkoMg==
+
+"@jswork/next-fetch@^1.2.1":
+  version "1.2.36"
+  resolved "https://registry.yarnpkg.com/@jswork/next-fetch/-/next-fetch-1.2.36.tgz#9ec06f5aa358ee55cbc44f869672a59f41cf3d11"
+  integrity sha512-PKUm9aoZeojY7rsSYWSfcNTbubhj/Ip7sXz5kNxQgkZcEMqDv4dCDH9HWLH+D4XlM5VaIPMeLr1Uz4ETvvY/Cw==
+  dependencies:
+    "@jswork/enhanced-fetch" "^1.0.25"
+    "@jswork/next-abstract-request" "^1.0.52"
+    "@jswork/next-param" "^1.0.8"
+
+"@jswork/next-filter-map@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@jswork/next-filter-map/-/next-filter-map-1.2.3.tgz#3838d1bfab416a7319900603c0aea8664fbdd841"
+  integrity sha512-0e7c1bhc9Juqm54uFUjexPt+uqYDvUFpXY84LmfdFumPcdQpOoa/MmebDHqWR9mMNxLhkJQFlOYOoR+1YQxP0A==
+
+"@jswork/next-interceptor@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@jswork/next-interceptor/-/next-interceptor-1.1.2.tgz#551b783c90aa6b1484b36805e9a3f746b33205a8"
+  integrity sha512-JG73HHuTOKvrRQyqRSVjbLCdJ7ifru0ifAcaQmr9wJVgPcTmv2Z+bHkOG0GZgwm/lUFubpVcD1NcgEsm0ANQiQ==
+  dependencies:
+    "@jswork/next-filter-map" "^1.2.3"
+    "@jswork/pipe" "^1.0.3"
+
+"@jswork/next-param@^1.0.12", "@jswork/next-param@^1.0.8":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@jswork/next-param/-/next-param-1.0.12.tgz#0e3b4f8ff1a62f63721ec3cb229747e963f07984"
+  integrity sha512-VuGKCeFMEz9Jd4VKQU9OMMJ4+Dw29j46axHfkDe32Dhu7GJ0kdqW6g2yqjNcWl51hWckDi8bPihpKHitL/DI+A==
+  dependencies:
+    js-base64 "^3.7.5"
+
+"@jswork/next-parse-request-args@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@jswork/next-parse-request-args/-/next-parse-request-args-1.0.9.tgz#45c2a31f6e641a346359f28978548794d696e6f9"
+  integrity sha512-2+EyS+SMeIenQ+n5gp+8nBNwpxtHbiT8YI8+nlTauEpNFCj1s3UjHq+HCaYuhFN8yzgj4wZehSNyxkYca3xcog==
+
+"@jswork/next-stub-singleton@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@jswork/next-stub-singleton/-/next-stub-singleton-1.0.7.tgz#b79e8bf39d9a1df2378529cfe25de6bc9bd09d1d"
+  integrity sha512-JJKbBb/6esNbi0XzJj5wWGJNZaav1m68gz01c7SfU/rCwIPajM+tSL4yHDsFldjsc4JcOkAesw1y8bzhqXqGCw==
+
+"@jswork/next-tmpl@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@jswork/next-tmpl/-/next-tmpl-1.0.7.tgz#7849e43f43782479329b740e0b93b40e3719a63f"
+  integrity sha512-PASVF+ak3RArfyJ9r7uDICLBYkko3MZwOkn9ORXU9malXdiUl/Eog2sELNIo+wPqWCn0sLpC2DoZTiTBmeQ7YA==
+
+"@jswork/node-http-schema@^1.0.4":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@jswork/node-http-schema/-/node-http-schema-1.1.1.tgz#fa445b3dec86898ab9b2bfb94a8d9ae75caa0a0b"
+  integrity sha512-XWCfNMoavc1YzS/PPwRxKPwxc6Hc8iZeR+o2fiKkayx0qx0cDGRDup1og9fDGyc/FfeSEC01s/iQpK261OB6yw==
+  dependencies:
+    "@jswork/http-rest-config" "^2.0.10"
+    "@jswork/next-fetch" "^1.2.1"
+
+"@jswork/pipe@^1.0.3":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@jswork/pipe/-/pipe-1.0.4.tgz#d34b9083c8bd53ba2fbf14628c6cb8a2f14f5f91"
+  integrity sha512-dGpOBYI1/zjY+gxph4Cl7aja1ddBVnxHaw3Zq0jF+eQPXpafzmFuEvtZpZxEk28W6467dCTYNBBTUJpUec8Tug==
+
 "@opensumi/cfworker-builder@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@opensumi/cfworker-builder/-/cfworker-builder-1.0.1.tgz#2f2f2c2d1be1337973cc5689d3a8682c3f0f209c"
@@ -864,6 +995,11 @@ isexe@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
+
+js-base64@^3.7.5:
+  version "3.7.5"
+  resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-3.7.5.tgz#21e24cf6b886f76d6f5f165bfcd69cc55b9e3fca"
+  integrity sha512-3MEt5DTINKqfScXKfJFrRbxkrnk2AxPWGBL/ycjz4dK8iqiSJ06UxD8jh8xuh6p10TX4t2+7FsBYVxxQbMg+qA==
 
 json-parse-better-errors@^1.0.1:
   version "1.0.2"

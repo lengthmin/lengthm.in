@@ -3,8 +3,9 @@ import { raw } from 'hono/html';
 import index from 'resources/index';
 import keys from 'resources/keys.sh';
 import { buf2hex } from './utils';
+import { THonoEnv } from './types';
 
-const app = new Hono<IHonoEnv>();
+const app = new Hono<THonoEnv>();
 
 app.post('/wx', async (ctx) => {
   const xmlString = await ctx.req.text();
