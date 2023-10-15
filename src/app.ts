@@ -1,18 +1,17 @@
-import { Router, IRequest } from 'itty-router';
-
+import { Hono } from 'hono';
+import { raw } from 'hono/html';
 import index from 'resources/index';
 import keys from 'resources/keys.sh';
 import { buf2hex } from './utils';
 
-type CF = [env: IRuntimeEnv, context: ExecutionContext];
+const app = new Hono<IHonoEnv>();
 
-const router = Router<IRequest, CF>();
-
-router.post('/wx', async (req: Request, environment, context) => {
-  const xmlString = await req.text();
+app.post('/wx', async (ctx) => {
+  const xmlString = await ctx.req.text();
 });
 
-router.get('/wx', async (req: Request, env, ctx) => {
+app.get('/wx', async (ctx) => {
+  const { req, env } = ctx;
   const query = new URL(req.url).searchParams;
 
   // 1.获取微信服务器Get请求的参数 signature、timestamp、nonce、echostr
@@ -40,19 +39,20 @@ router.get('/wx', async (req: Request, env, ctx) => {
     return new Response('mismatch');
   }
 });
-router.get('/keys', async (_r, env) => await fetch(`${env.GITHUB}.keys`));
-router.get('/keys.sh', (_r, env) => {
-  const data = keys.replace(/{{HOST}}/g, env.HOST);
+app.get('/keys', async (c) => await fetch(`${c.env.GITHUB}.keys`));
+app.get('/keys.sh', (c) => {
+  const data = keys.replace(/{{HOST}}/g, c.env.HOST);
   return new Response(data);
 });
-router.get('/gpg', async (_r, env) => await fetch(`${env.GITHUB}.gpg`));
+app.get('/gpg', async (c) => await fetch(`${c.env.GITHUB}.gpg`));
 
-router.get('/r2/*', async (request, env, context) => {
+app.get('/r2/*', async (ctx) => {
+  const { req } = ctx;
   try {
-    const url = new URL(request.url);
+    const url = new URL(req.url);
 
     // Construct the cache key from the cache URL
-    const cacheKey = new Request(url.toString(), request);
+    const cacheKey = new Request(url.toString(), req);
     const cache = caches.default;
 
     // Check whether the value is already available in the cache
@@ -61,17 +61,17 @@ router.get('/r2/*', async (request, env, context) => {
     let response = await cache.match(cacheKey);
 
     if (response) {
-      console.log(`Cache hit for: ${request.url}.`);
+      console.log(`Cache hit for: ${req.url}.`);
       return response;
     }
 
     console.log(
-      `Response for request url: ${request.url} not present in cache. Fetching and caching request.`,
+      `Response for request url: ${req.url} not present in cache. Fetching and caching request.`,
     );
 
     // If not in cache, get it from R2
     const objectKey = url.pathname.slice('/r2/'.length);
-    const object = await env.MY_BUCKET.get(objectKey);
+    const object = await ctx.env.MY_BUCKET.get(objectKey);
     if (object === null) {
       return new Response('Object Not Found', { status: 404 });
     }
@@ -93,7 +93,7 @@ router.get('/r2/*', async (request, env, context) => {
     // Store the fetched response as cacheKey
     // Use waitUntil so you can return the response without blocking on
     // writing to cache
-    context.waitUntil(cache.put(cacheKey, response.clone()));
+    ctx.executionCtx.waitUntil(cache.put(cacheKey, response.clone()));
 
     return response;
   } catch (e) {
@@ -101,15 +101,6 @@ router.get('/r2/*', async (request, env, context) => {
   }
 });
 
-// in the end
-router.all(
-  '*',
-  () =>
-    new Response(index, {
-      headers: {
-        'content-type': 'text/html;charset=UTF-8',
-      },
-    }),
-);
+app.get('*', (ctx) => ctx.html(raw(index)));
 
-export default router;
+export default app;

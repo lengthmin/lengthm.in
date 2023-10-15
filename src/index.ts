@@ -1,6 +1,3 @@
-import { error, json } from 'itty-router';
-import router from './router';
+import app from './app';
 
-export default {
-  fetch: (req, env, ctx) => router.handle(req, env, ctx).catch(error),
-} as ExportedHandler<IRuntimeEnv>;
+export default app;
