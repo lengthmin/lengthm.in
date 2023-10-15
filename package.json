@@ -27,7 +27,6 @@
     "wrangler": "^3.6.0"
   },
   "dependencies": {
-    "@jswork/bark-jssdk": "^1.0.5",
     "@opensumi/cfworker-builder": "^1.0.1",
     "dotenv": "^16.3.1",
     "hono": "^3.7.6",

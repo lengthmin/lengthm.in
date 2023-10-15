@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
-import BarkJssdk from '@jswork/bark-jssdk';
 import { THono, THonoEnv } from '../types';
+import { Bark, IBarkSendParam } from './bark';
 
 export function route(hono: THono) {
   const notify = new Hono<THonoEnv>();
@@ -15,25 +15,21 @@ interface IDingtalkPostBody {
   sk: string;
 }
 
-interface IBarkPostBody {
-  title: string;
-  text: string;
-}
-
 function bark(hono: THono) {
   hono.post('/b/:group?', async (ctx) => {
-    const sdk = new BarkJssdk({
-      sdkKey: ctx.env.BARK_SDK_KEY,
+    console.log('sdk key', ctx.env.BARK_SDK_KEY);
+    const sdk = new Bark({
+      token: ctx.env.BARK_SDK_KEY,
     });
     const group = ctx.req.param('group');
-    const body = (await ctx.req.json()) as IBarkPostBody;
+    const body = (await ctx.req.json()) as IBarkSendParam;
 
-    await sdk.notify({
+    return await sdk.send({
       title: body.title,
-      body: body.text,
-      copy: body.text,
-      automaticallyCopy: true,
-      group: parseInt(group || '0', 10),
+      body: body.body,
+      copy: body.copy || body.body,
+      group: group || body.group,
+      autoCopy: body.autoCopy,
     });
   });
 }
@@ -47,20 +43,4 @@ function dingtalk(hono: THono) {
       const body = await req.json();
     }
   });
-}
-
-interface IBarkSendParam {
-  /**
-   * 推送标题
-   */
-  title: string;
-}
-
-export class Bark {
-  baseUrl: string;
-  constructor(token: string) {
-    this.baseUrl = `https://api.day.app/${token}`;
-  }
-
-  async send(param: IBarkSendParam) {}
 }

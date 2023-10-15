@@ -4,6 +4,7 @@ import index from 'resources/index';
 import keys from 'resources/keys.sh';
 import { buf2hex } from './utils';
 import { THonoEnv } from './types';
+import { ignition } from './controllers';
 
 const app = new Hono<THonoEnv>();
 
@@ -101,6 +102,8 @@ app.get('/r2/*', async (ctx) => {
     return new Response('Error thrown ' + (e as Error).message);
   }
 });
+
+ignition(app);
 
 app.get('*', (ctx) => ctx.html(raw(index)));
 

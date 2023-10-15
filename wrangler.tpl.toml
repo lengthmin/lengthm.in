@@ -13,3 +13,8 @@ preview_bucket_name = '{{CLOUDFLARE_PREVIEW_BUCKET_NAME}}'
 
 [vars]
 GITHUB = "https://github.com/bytemain"
+ENVIRONMENT = "dev"
+
+
+[env.prod]
+vars = { ENVIRONMENT = "prod" }
