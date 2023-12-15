@@ -29,7 +29,7 @@
   "dependencies": {
     "@opensumi/cfworker-builder": "^1.0.1",
     "dotenv": "^16.3.1",
-    "hono": "^3.7.6",
+    "hono": "^3.11.7",
     "xml2js": "^0.5.0"
   }
 }
