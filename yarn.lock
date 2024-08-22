@@ -654,10 +654,10 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-hono@^3.11.7:
-  version "3.11.7"
-  resolved "https://registry.yarnpkg.com/hono/-/hono-3.11.7.tgz#e44f8aa3a18f19775304328bde6f559f7a02447f"
-  integrity sha512-TcfAq7IdipF+9coxnuzYlSSBXbm9mTyWjjagLCv/2ampboNcKJdi+XCK5G48mHQtpI5+9Rj3J4FfcGgw9vzIww==
+hono@^4.5.8:
+  version "4.5.8"
+  resolved "https://registry.yarnpkg.com/hono/-/hono-4.5.8.tgz#212ee54b214cd90ecc44904b6f00ee58a9af32b8"
+  integrity sha512-pqpSlcdqGkpTTRpLYU1PnCz52gVr0zVR9H5GzMyJWuKQLLEBQxh96q45QizJ2PPX8NATtz2mu31/PKW/Jt+90Q==
 
 hosted-git-info@^2.1.4:
   version "2.8.9"
